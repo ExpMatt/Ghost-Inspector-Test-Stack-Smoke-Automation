@@ -7,9 +7,10 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - name: execute Ghost Inspector test
+      - name: execute Smoke Ghost Inspector test
         uses: docker://ghostinspector/cli
         with:
-          args: suite execute ${{ secrets.GI_TEST_SUITE }} \
+          args: test execute ${{ secrets.GI_SCREEN_CHECKER_TEST }} \
+                test execute ${{ secrets.GI_INVALID_CREDS_TEST }} \
             --apiKey ${{ secrets.GI_API_KEY }} \
             --errorOnFail
