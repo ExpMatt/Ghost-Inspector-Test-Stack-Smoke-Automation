@@ -14,6 +14,12 @@ jobs:
             --apiKey ${{ secrets.GI_API_KEY }} \
             --errorOnFail
 
+      - name: execute Fail test
+        uses: docker://ghostinspector/cli
+        with:
+          args: test execute ${{ secrets.GI_TEST_FAIL }} \
+            --apiKey ${{ secrets.GI_API_KEY }} \
+
       - name: execute Invalid Creds test
         uses: docker://ghostinspector/cli
         with:
